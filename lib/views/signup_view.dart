@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:ecommerce_example/color_schemes.g.dart';
+import 'package:ecommerce_example/color_schemes.dart';
 import 'package:ecommerce_example/widgets/re_button.dart';
 import 'package:ecommerce_example/widgets/re_email_field.dart';
 import 'package:ecommerce_example/widgets/re_password_field.dart';

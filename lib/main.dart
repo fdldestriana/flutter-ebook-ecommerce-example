@@ -2,7 +2,7 @@ import 'package:ecommerce_example/views/signup_view.dart';
 import 'package:ecommerce_example/state_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'color_schemes.g.dart';
+import 'color_schemes.dart';
 
 void main() {
   runApp(const MyApp());

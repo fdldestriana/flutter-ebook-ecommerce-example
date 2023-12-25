@@ -1,4 +1,4 @@
-import 'package:ecommerce_example/color_schemes.g.dart';
+import 'package:ecommerce_example/color_schemes.dart';
 import 'package:ecommerce_example/state_util.dart';
 import 'package:flutter/material.dart';
 
