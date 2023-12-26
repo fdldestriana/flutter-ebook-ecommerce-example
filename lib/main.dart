@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -32,24 +31,6 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme.apply(
               bodyColor: lightColorScheme.shadow,
               displayColor: lightColorScheme.shadow),
-        ),
-      ),
-      darkTheme: ThemeData(
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFFDB3022),
-            foregroundColor: Colors.white,
-          ),
-        ),
-        colorScheme: darkColorScheme,
-        useMaterial3: true,
-        scaffoldBackgroundColor: darkColorScheme
-            .copyWith(background: const Color(0XFFF9F9F9))
-            .background,
-        textTheme: GoogleFonts.montserratTextTheme(
-          Theme.of(context).textTheme.apply(
-              bodyColor: darkColorScheme.shadow,
-              displayColor: darkColorScheme.shadow),
         ),
       ),
       home: const SignupView(),

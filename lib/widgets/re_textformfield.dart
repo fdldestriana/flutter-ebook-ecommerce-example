@@ -2,19 +2,21 @@ import 'package:ecommerce_example/color_schemes.dart';
 import 'package:ecommerce_example/state_util.dart';
 import 'package:flutter/material.dart';
 
-class RePasswordField extends StatelessWidget {
-  const RePasswordField(this.controller, {super.key});
+// ignore: must_be_immutable
+class ReTextFormField extends StatelessWidget {
+  ReTextFormField({
+    super.key,
+    required this.labelText,
+    required this.controller,
+    required this.validator,
+    // required this.onChanged,
+    this.isObscured = false,
+  });
+  final String labelText;
   final TextEditingController controller;
-
-  String? passwordValidator(value) {
-    if (value == null || value.isEmpty) {
-      return 'Password can not be empty';
-    }
-    if (value.length < 6) {
-      return 'Password must be at least 6 characters';
-    }
-    return null;
-  }
+  final String? Function(String?)? validator;
+  // final void Function(String)? onChanged;
+  bool isObscured;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class RePasswordField extends StatelessWidget {
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(left: Get.width * 0.05),
-          labelText: 'Password',
+          labelText: labelText,
           labelStyle: TextStyle(
               fontSize: 14,
               color: lightColorScheme
@@ -43,9 +45,11 @@ class RePasswordField extends StatelessWidget {
                 )
               : null,
         ),
-        validator: passwordValidator,
-        obscureText: true,
-        onChanged: (value) {},
+        validator: validator,
+        obscureText: isObscured,
+        onChanged: (value) {
+          if (validator != null) null;
+        },
       ),
     );
   }

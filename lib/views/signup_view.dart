@@ -1,10 +1,9 @@
 import 'dart:io';
 import 'package:ecommerce_example/color_schemes.dart';
+import 'package:ecommerce_example/validator.dart';
 import 'package:ecommerce_example/widgets/re_button.dart';
-import 'package:ecommerce_example/widgets/re_email_field.dart';
-import 'package:ecommerce_example/widgets/re_password_field.dart';
+import 'package:ecommerce_example/widgets/re_textformfield.dart';
 import 'package:ecommerce_example/widgets/re_photo_picker.dart';
-import 'package:ecommerce_example/widgets/re_name_field.dart';
 import 'package:ecommerce_example/state_util.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -84,10 +83,10 @@ class _SignupViewState extends State<SignupView> {
                   ),
                   Text(
                     'Sign up',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall!
-                        .copyWith(fontSize: 34, fontWeight: FontWeight.w700),
+                    style: GoogleFonts.montserrat(
+                      textStyle: const TextStyle(
+                          fontSize: 34, fontWeight: FontWeight.w700),
+                    ),
                   ),
                   SizedBox(
                     height: Get.height * 0.02,
@@ -101,15 +100,31 @@ class _SignupViewState extends State<SignupView> {
                   SizedBox(
                     height: Get.height * 0.08,
                   ),
-                  ReNameField(nameController),
+                  ReTextFormField(
+                    labelText: "Name",
+                    controller: nameController,
+                    validator: (name) => Validator.nameValidator(name),
+                    // onChanged: (name) => setState(() {}),
+                  ),
                   SizedBox(
                     height: Get.height * 0.01,
                   ),
-                  ReEmailField(emailController),
+                  ReTextFormField(
+                    labelText: "Email",
+                    controller: emailController,
+                    validator: (email) => Validator.emailValidator(email),
+                    // onChanged: (email) => setState(() {}),
+                  ),
                   SizedBox(
                     height: Get.height * 0.01,
                   ),
-                  RePasswordField(passwordController),
+                  ReTextFormField(
+                    labelText: "Password",
+                    controller: passwordController,
+                    validator: (pass) => Validator.passwordValidator(pass),
+                    // onChanged: (pass) => setState(() {}),
+                    isObscured: true,
+                  ),
                   SizedBox(
                     height: Get.height * 0.02,
                   ),
@@ -136,7 +151,7 @@ class _SignupViewState extends State<SignupView> {
                     height: Get.height * 0.02,
                   ),
                   ReButton(
-                      onPressed: () {},
+                      onPressed: () => signUpKey.currentState!.validate(),
                       width: double.infinity,
                       height: Get.height * 0.06,
                       text: "SIGN UP"),
