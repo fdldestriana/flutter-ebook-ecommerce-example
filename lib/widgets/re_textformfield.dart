@@ -9,13 +9,12 @@ class ReTextFormField extends StatelessWidget {
     required this.labelText,
     required this.controller,
     required this.validator,
-    // required this.onChanged,
     this.isObscured = false,
   });
   final String labelText;
   final TextEditingController controller;
   final String? Function(String?)? validator;
-  // final void Function(String)? onChanged;
+
   bool isObscured;
 
   @override
@@ -28,28 +27,25 @@ class ReTextFormField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(left: Get.width * 0.05),
-          labelText: labelText,
-          labelStyle: TextStyle(
-              fontSize: 14,
-              color: lightColorScheme
-                  .copyWith(background: const Color(0XFF9B9B9B))
-                  .background),
-          suffixIcon: controller.text.isNotEmpty
-              ? Icon(
-                  Icons.check,
-                  color: lightColorScheme
-                      .copyWith(background: const Color(0XFF2AA952))
-                      .background,
-                )
-              : null,
-        ),
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.only(left: Get.width * 0.05),
+            labelText: labelText,
+            labelStyle: TextStyle(
+                fontSize: 14,
+                color: lightColorScheme
+                    .copyWith(background: const Color(0XFF9B9B9B))
+                    .background),
+            suffixIcon: controller.text.isNotEmpty
+                ? Icon(
+                    Icons.check,
+                    color: lightColorScheme
+                        .copyWith(background: const Color(0XFF2AA952))
+                        .background,
+                  )
+                : null),
         validator: validator,
         obscureText: isObscured,
-        onChanged: (value) {
-          if (validator != null) null;
-        },
+        onChanged: (value) {},
       ),
     );
   }

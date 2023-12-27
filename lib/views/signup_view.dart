@@ -104,7 +104,6 @@ class _SignupViewState extends State<SignupView> {
                     labelText: "Name",
                     controller: nameController,
                     validator: (name) => Validator.nameValidator(name),
-                    // onChanged: (name) => setState(() {}),
                   ),
                   SizedBox(
                     height: Get.height * 0.01,
@@ -113,7 +112,6 @@ class _SignupViewState extends State<SignupView> {
                     labelText: "Email",
                     controller: emailController,
                     validator: (email) => Validator.emailValidator(email),
-                    // onChanged: (email) => setState(() {}),
                   ),
                   SizedBox(
                     height: Get.height * 0.01,
@@ -122,7 +120,6 @@ class _SignupViewState extends State<SignupView> {
                     labelText: "Password",
                     controller: passwordController,
                     validator: (pass) => Validator.passwordValidator(pass),
-                    // onChanged: (pass) => setState(() {}),
                     isObscured: true,
                   ),
                   SizedBox(
@@ -132,13 +129,14 @@ class _SignupViewState extends State<SignupView> {
                     padding: EdgeInsets.only(left: Get.width * 0.30),
                     child: TextButton(
                       onPressed: () {},
-                      child: const Row(
+                      child: Row(
                         children: [
                           Text(
                             'Already have an account?',
-                            style: TextStyle(fontSize: 14),
+                            style: TextStyle(
+                                color: lightColorScheme.scrim, fontSize: 14),
                           ),
-                          Expanded(
+                          const Expanded(
                             child: Icon(
                               Icons.arrow_forward,
                             ),

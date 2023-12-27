@@ -15,20 +15,20 @@ class RePhotoPicker extends StatelessWidget {
       alignment: Alignment.bottomRight,
       children: [
         ReCircleAvatar(
-          avatarRadius: 40.0,
-          iconSize: 40.0,
+          bgAvatarRadius: 40.0,
+          sizeIcon: 40.0,
           bgCircleAvatar: Colors.grey[350] as Color,
-          bgIcon: lightColorScheme.shadow,
+          colorIcon: lightColorScheme.shadow,
           icon: Icons.person,
           file: file,
         ),
         GestureDetector(
           onTap: onTap,
           child: ReCircleAvatar(
-            avatarRadius: 16.0,
-            iconSize: 16.0,
+            bgAvatarRadius: 16.0,
+            sizeIcon: 16.0,
             bgCircleAvatar: Colors.grey[400] as Color,
-            bgIcon: lightColorScheme.onPrimary,
+            colorIcon: lightColorScheme.onPrimary,
             icon: Icons.camera_alt,
             file: null,
           ),
