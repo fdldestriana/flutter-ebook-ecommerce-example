@@ -21,6 +21,7 @@ class _SignupViewState extends State<SignupView> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  File? file;
 
   @override
   void dispose() {
@@ -30,7 +31,6 @@ class _SignupViewState extends State<SignupView> {
     passwordController.dispose();
   }
 
-  File? file;
   Future<void> photoPicker() async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
