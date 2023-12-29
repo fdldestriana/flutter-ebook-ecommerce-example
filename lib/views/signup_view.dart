@@ -31,38 +31,54 @@ class _SignupViewState extends State<SignupView> {
     passwordController.dispose();
   }
 
+  // Future<void> photoPicker() async {
+  //   try {
+  //     FilePickerResult? result = await FilePicker.platform.pickFiles(
+  //       allowMultiple: false,
+  //       allowedExtensions: ['png', 'jpg'],
+  //       type: FileType.custom,
+  //     );
+  //     file = result != null ? File(result.files.single.path as String) : null;
+  //     setState(() {});
+  //   } on Exception catch (e) {
+  //     if (mounted) {
+  //       showDialog(
+  //         context: context,
+  //         builder: (context) {
+  //           return AlertDialog(
+  //             actions: [
+  //               TextButton(
+  //                 onPressed: () => Navigator.pop(context),
+  //                 child: Text(
+  //                   "Ok",
+  //                   style:
+  //                       GoogleFonts.montserrat(color: lightColorScheme.shadow),
+  //                 ),
+  //               )
+  //             ],
+  //             backgroundColor: Colors.grey[200],
+  //             content: Text(e.toString()),
+  //             title: const Text("An error occured"),
+  //           );
+  //         },
+  //       );
+  //     }
+  //   }
+  // }
+
   Future<void> photoPicker() async {
-    try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles(
-        allowMultiple: false,
-        allowedExtensions: ['png', 'jpg'],
-        type: FileType.custom,
-      );
-      file = result != null ? File(result.files.single.path as String) : null;
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      allowMultiple: false,
+      allowedExtensions: ['png', 'jpg'],
+      type: FileType.custom,
+    );
+
+    if (result != null) {
+      file = File(result.files.single.path as String);
       setState(() {});
-    } on Exception catch (e) {
-      if (mounted) {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text(
-                    "Ok",
-                    style:
-                        GoogleFonts.montserrat(color: lightColorScheme.shadow),
-                  ),
-                )
-              ],
-              backgroundColor: Colors.grey[200],
-              content: Text(e.toString()),
-              title: const Text("An error occured"),
-            );
-          },
-        );
-      }
+    } else {
+      file = null;
+      setState(() {});
     }
   }
 
