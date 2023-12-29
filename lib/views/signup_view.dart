@@ -21,7 +21,7 @@ class _SignupViewState extends State<SignupView> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  File? file;
+  File? photoProfile;
 
   @override
   void dispose() {
@@ -66,18 +66,17 @@ class _SignupViewState extends State<SignupView> {
   //   }
   // }
 
-  Future<void> photoPicker() async {
+  Future<void> _photoPicker() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       allowMultiple: false,
       allowedExtensions: ['png', 'jpg'],
       type: FileType.custom,
     );
-
     if (result != null) {
-      file = File(result.files.single.path as String);
+      photoProfile = File(result.files.single.path as String);
       setState(() {});
     } else {
-      file = null;
+      photoProfile = null;
       setState(() {});
     }
   }
@@ -109,8 +108,8 @@ class _SignupViewState extends State<SignupView> {
                   ),
                   Center(
                     child: RePhotoPicker(
-                      file: file,
-                      onTap: () => photoPicker(),
+                      file: photoProfile,
+                      onTap: () => _photoPicker(),
                     ),
                   ),
                   SizedBox(
