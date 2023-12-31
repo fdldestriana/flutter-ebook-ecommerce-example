@@ -88,7 +88,7 @@ class _SignupViewState extends State<SignupView> {
         child: SingleChildScrollView(
           child: Form(
             key: signUpKey,
-            child: Container(
+            child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
