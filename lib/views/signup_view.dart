@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:ecommerce_example/color_schemes.dart';
 import 'package:ecommerce_example/validator.dart';
 import 'package:ecommerce_example/widgets/re_button.dart';
+import 'package:ecommerce_example/widgets/re_textbuton.dart';
 import 'package:ecommerce_example/widgets/re_textformfield.dart';
 import 'package:ecommerce_example/widgets/re_photo_picker.dart';
 import 'package:ecommerce_example/state_util.dart';
@@ -88,115 +88,99 @@ class _SignupViewState extends State<SignupView> {
         child: SingleChildScrollView(
           child: Form(
             key: signUpKey,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: Get.height * 0.02,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: Get.height * 0.02,
+                ),
+                Text(
+                  'Sign up',
+                  style: GoogleFonts.montserrat(
+                    textStyle: const TextStyle(
+                        fontSize: 34, fontWeight: FontWeight.w700),
                   ),
-                  Text(
-                    'Sign up',
-                    style: GoogleFonts.montserrat(
-                      textStyle: const TextStyle(
-                          fontSize: 34, fontWeight: FontWeight.w700),
-                    ),
+                ),
+                SizedBox(
+                  height: Get.height * 0.02,
+                ),
+                Center(
+                  child: RePhotoPicker(
+                    file: photoProfile,
+                    onTap: () => _photoPicker(),
                   ),
-                  SizedBox(
-                    height: Get.height * 0.02,
+                ),
+                SizedBox(
+                  height: Get.height * 0.08,
+                ),
+                ReTextFormField(
+                  labelText: "Name",
+                  controller: nameController,
+                  validator: (name) => Validator.nameValidator(name),
+                ),
+                SizedBox(
+                  height: Get.height * 0.01,
+                ),
+                ReTextFormField(
+                  labelText: "Email",
+                  controller: emailController,
+                  validator: (email) => Validator.emailValidator(email),
+                ),
+                SizedBox(
+                  height: Get.height * 0.01,
+                ),
+                ReTextFormField(
+                  labelText: "Password",
+                  controller: passwordController,
+                  validator: (pass) => Validator.passwordValidator(pass),
+                  isObscured: true,
+                ),
+                SizedBox(
+                  height: Get.height * 0.02,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: Get.width * 0.30),
+                  child: ReTextButton(
+                    label: 'Already have an account?',
+                    onPressed: () {},
                   ),
-                  Center(
-                    child: RePhotoPicker(
-                      file: photoProfile,
-                      onTap: () => _photoPicker(),
-                    ),
+                ),
+                SizedBox(
+                  height: Get.height * 0.02,
+                ),
+                ReButton(
+                    onPressed: () => signUpKey.currentState!.validate(),
+                    width: double.infinity,
+                    height: Get.height * 0.06,
+                    text: "SIGN UP"),
+                SizedBox(
+                  height: Get.height * 0.05,
+                ),
+                const Center(
+                  child: Text(
+                    'Or sign up with social account',
+                    style: TextStyle(fontSize: 14),
                   ),
-                  SizedBox(
-                    height: Get.height * 0.08,
+                ),
+                SizedBox(
+                  height: Get.height * 0.01,
+                ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: Image.asset(
+                              'assets/social_media_buttons/google.png')),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Image.asset(
+                              'assets/social_media_buttons/facebook.png')),
+                    ],
                   ),
-                  ReTextFormField(
-                    labelText: "Name",
-                    controller: nameController,
-                    validator: (name) => Validator.nameValidator(name),
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.01,
-                  ),
-                  ReTextFormField(
-                    labelText: "Email",
-                    controller: emailController,
-                    validator: (email) => Validator.emailValidator(email),
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.01,
-                  ),
-                  ReTextFormField(
-                    labelText: "Password",
-                    controller: passwordController,
-                    validator: (pass) => Validator.passwordValidator(pass),
-                    isObscured: true,
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.02,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: Get.width * 0.30),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Row(
-                        children: [
-                          Text(
-                            'Already have an account?',
-                            style: TextStyle(
-                                color: lightColorScheme.scrim, fontSize: 14),
-                          ),
-                          const Expanded(
-                            child: Icon(
-                              Icons.arrow_forward,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.02,
-                  ),
-                  ReButton(
-                      onPressed: () => signUpKey.currentState!.validate(),
-                      width: double.infinity,
-                      height: Get.height * 0.06,
-                      text: "SIGN UP"),
-                  SizedBox(
-                    height: Get.height * 0.05,
-                  ),
-                  const Center(
-                    child: Text(
-                      'Or sign up with social account',
-                      style: TextStyle(fontSize: 14),
-                    ),
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.01,
-                  ),
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                            onPressed: () {},
-                            icon: Image.asset(
-                                'assets/social_media_buttons/google.png')),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Image.asset(
-                                'assets/social_media_buttons/facebook.png')),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
           ),
         ),
