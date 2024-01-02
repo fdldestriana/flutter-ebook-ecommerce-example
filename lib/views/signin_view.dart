@@ -1,49 +1,28 @@
-import 'dart:io';
+import 'package:ecommerce_example/state_util.dart';
 import 'package:ecommerce_example/validator.dart';
 import 'package:ecommerce_example/widgets/re_button.dart';
 import 'package:ecommerce_example/widgets/re_textbuton.dart';
 import 'package:ecommerce_example/widgets/re_textformfield.dart';
-import 'package:ecommerce_example/widgets/re_photo_picker.dart';
-import 'package:ecommerce_example/state_util.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SignupView extends StatefulWidget {
-  const SignupView({super.key});
+class SigninView extends StatefulWidget {
+  const SigninView({super.key});
 
   @override
-  State<SignupView> createState() => _SignupViewState();
+  State<SigninView> createState() => _SigninViewState();
 }
 
-class _SignupViewState extends State<SignupView> {
-  final GlobalKey<FormState> signUpKey = GlobalKey<FormState>();
-  TextEditingController nameController = TextEditingController();
+class _SigninViewState extends State<SigninView> {
+  final GlobalKey<FormState> signInKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  File? photoProfile;
 
   @override
   void dispose() {
     super.dispose();
-    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
-  }
-
-  Future<void> _photoPicker() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      allowMultiple: false,
-      allowedExtensions: ['png', 'jpg'],
-      type: FileType.custom,
-    );
-    if (result != null) {
-      photoProfile = File(result.files.single.path as String);
-      setState(() {});
-    } else {
-      photoProfile = null;
-      setState(() {});
-    }
   }
 
   @override
@@ -52,7 +31,7 @@ class _SignupViewState extends State<SignupView> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Form(
-            key: signUpKey,
+            key: signInKey,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
@@ -62,7 +41,7 @@ class _SignupViewState extends State<SignupView> {
                     height: Get.height * 0.02,
                   ),
                   Text(
-                    'Sign up',
+                    'Sign in',
                     style: GoogleFonts.montserrat(
                       textStyle: const TextStyle(
                           fontSize: 34, fontWeight: FontWeight.w700),
@@ -71,19 +50,8 @@ class _SignupViewState extends State<SignupView> {
                   SizedBox(
                     height: Get.height * 0.02,
                   ),
-                  Center(
-                    child: RePhotoPicker(
-                      file: photoProfile,
-                      onTap: () => _photoPicker(),
-                    ),
-                  ),
                   SizedBox(
                     height: Get.height * 0.08,
-                  ),
-                  ReTextFormField(
-                    labelText: "Name",
-                    controller: nameController,
-                    validator: (name) => Validator.nameValidator(name),
                   ),
                   SizedBox(
                     height: Get.height * 0.01,
@@ -108,7 +76,7 @@ class _SignupViewState extends State<SignupView> {
                   Padding(
                     padding: EdgeInsets.only(left: Get.width * 0.30),
                     child: ReTextButton(
-                      label: 'Already have an account?',
+                      label: 'Forgot your password?',
                       onPressed: () {},
                     ),
                   ),
@@ -116,16 +84,16 @@ class _SignupViewState extends State<SignupView> {
                     height: Get.height * 0.02,
                   ),
                   ReButton(
-                      onPressed: () => signUpKey.currentState!.validate(),
+                      onPressed: () => signInKey.currentState!.validate(),
                       width: double.infinity,
                       height: Get.height * 0.06,
-                      text: "SIGN UP"),
+                      text: "SIGN IN"),
                   SizedBox(
                     height: Get.height * 0.05,
                   ),
                   const Center(
                     child: Text(
-                      'Or sign up with social account',
+                      'Or login with social account',
                       style: TextStyle(fontSize: 14),
                     ),
                   ),

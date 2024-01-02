@@ -1,4 +1,4 @@
-import 'package:ecommerce_example/views/signup_view.dart';
+import 'package:ecommerce_example/views/signin_view.dart';
 import 'package:ecommerce_example/state_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
               displayColor: lightColorScheme.shadow),
         ),
       ),
-      home: const SignupView(),
+      home: const SigninView(),
       navigatorKey: Get.navigatorKey,
     );
   }
