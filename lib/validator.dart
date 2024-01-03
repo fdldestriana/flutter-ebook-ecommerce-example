@@ -6,7 +6,9 @@ class Validator {
 
   static emailValidator(String? value) {
     if (value == null || value.isEmpty) return 'Email can not be empty';
-    if (!value.contains("@")) return 'Email does not valid';
+    if (!value.contains("@")) {
+      return 'Not a valid email address. Should be your@email.com';
+    }
     return null;
   }
 

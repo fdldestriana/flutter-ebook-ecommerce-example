@@ -12,6 +12,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^6.1.0
   file_picker: ^6.1.1
+  camera: ^0.10.5+7
+  path_provider: ^2.1.1
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:
@@ -29,8 +32,8 @@ flutter_launcher_icons:
 flutter:
   uses-material-design: true
   assets:
-    - assets/social_media_buttons/facebook.png
-    - assets/social_media_buttons/google.png
+    - assets/social_media_buttons/
+    - assets/background/
   # fonts:
   #   - family: Schyler
   #     fonts:

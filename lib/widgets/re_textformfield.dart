@@ -2,9 +2,8 @@ import 'package:ecommerce_example/color_schemes.dart';
 import 'package:ecommerce_example/state_util.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class ReTextFormField extends StatelessWidget {
-  ReTextFormField({
+  const ReTextFormField({
     super.key,
     required this.labelText,
     required this.controller,
@@ -15,7 +14,7 @@ class ReTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
 
-  bool isObscured;
+  final bool isObscured;
 
   @override
   Widget build(BuildContext context) {
@@ -27,22 +26,18 @@ class ReTextFormField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.only(left: Get.width * 0.05),
-            labelText: labelText,
-            labelStyle: TextStyle(
-                fontSize: 14,
-                color: lightColorScheme
-                    .copyWith(background: const Color(0XFF9B9B9B))
-                    .background),
-            suffixIcon: controller.text.isNotEmpty
-                ? Icon(
-                    Icons.check,
-                    color: lightColorScheme
-                        .copyWith(background: const Color(0XFF2AA952))
-                        .background,
-                  )
-                : null),
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(left: Get.width * 0.05),
+          errorBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.red, width: 1.0),
+          ),
+          labelText: labelText,
+          labelStyle: TextStyle(
+              fontSize: 14,
+              color: lightColorScheme
+                  .copyWith(background: const Color(0XFF9B9B9B))
+                  .background),
+        ),
         validator: validator,
         obscureText: isObscured,
         onChanged: (value) {},
