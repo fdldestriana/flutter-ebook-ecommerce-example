@@ -1,23 +1,15 @@
 import 'package:camera/camera.dart';
 import 'package:ecommerce_example/state_util.dart';
-import 'package:ecommerce_example/views/visual_search_view.dart';
+import 'package:ecommerce_example/views/taking_photo_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'color_schemes.dart';
 
 void main() async {
-  // Ensure that plugin services are initialized so that `availableCameras()`
-// can be called before `runApp()`
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Obtain a list of the available cameras on the device.
   final cameras = await availableCameras();
-
-// Get a specific camera from the list of available cameras.
   final firstCamera = cameras.first;
-  runApp(MyApp(
-    camera: firstCamera,
-  ));
+  runApp(MyApp(camera: firstCamera));
 }
 
 class MyApp extends StatelessWidget {
@@ -45,7 +37,7 @@ class MyApp extends StatelessWidget {
               displayColor: lightColorScheme.shadow),
         ),
       ),
-      home: const VisualSearchView(),
+      home: TakingPhotoView(camera: camera),
       navigatorKey: Get.navigatorKey,
     );
   }

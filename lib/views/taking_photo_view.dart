@@ -1,96 +1,104 @@
-// A screen that allows users to take a picture using a given camera.
-import 'dart:io';
-
 import 'package:camera/camera.dart';
+import 'package:ecommerce_example/color_schemes.dart';
+import 'package:ecommerce_example/views/crop_item_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class TakingPhotoView extends StatefulWidget {
-  const TakingPhotoView({
-    super.key,
-    required this.camera,
-  });
-
+  const TakingPhotoView({super.key, required this.camera});
   final CameraDescription camera;
-
   @override
   TakingPhotoViewState createState() => TakingPhotoViewState();
 }
 
 class TakingPhotoViewState extends State<TakingPhotoView> {
-  late CameraController _controller;
+  late CameraController _cameraController;
   late Future<void> _initializeControllerFuture;
 
   @override
   void initState() {
     super.initState();
-
-    _controller = CameraController(
+    _cameraController = CameraController(
       widget.camera,
       ResolutionPreset.medium,
     );
-
-    _initializeControllerFuture = _controller.initialize();
+    _initializeControllerFuture = _cameraController.initialize();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _cameraController.dispose();
     super.dispose();
+  }
+
+  void takingPhoto() async {
+    try {
+      await _initializeControllerFuture;
+      final image = await _cameraController.takePicture();
+      if (!mounted) return;
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => CropItemView(
+            imagePath: image.path,
+          ),
+        ),
+      );
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Take a picture')),
-      body: FutureBuilder<void>(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'Search by taking a photo',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: FutureBuilder(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return CameraPreview(_controller);
+            return CameraPreview(_cameraController);
           } else {
             return const Center(child: CircularProgressIndicator());
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          try {
-            await _initializeControllerFuture;
-
-            final image = await _controller.takePicture();
-
-            if (!mounted) return;
-
-            await Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DisplayPictureScreen(
-                  imagePath: image.path,
+      bottomNavigationBar: BottomAppBar(
+        height: 165,
+        padding: EdgeInsets.zero,
+        child: Container(
+          color: lightColorScheme
+              .copyWith(background: const Color(0XFFF9F9F9))
+              .background,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(onPressed: () {}, icon: const Icon(Icons.flash_on)),
+              CircleAvatar(
+                radius: 30,
+                backgroundColor: lightColorScheme.primary,
+                child: IconButton(
+                  onPressed: () => takingPhoto(),
+                  icon: Icon(
+                    Icons.photo_camera,
+                    color: lightColorScheme.onPrimary,
+                  ),
                 ),
               ),
-            );
-          } catch (e) {
-            if (kDebugMode) {
-              print(e);
-            }
-          }
-        },
-        child: const Icon(Icons.camera_alt),
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.flip_camera_android_sharp))
+            ],
+          ),
+        ),
       ),
-    );
-  }
-}
-
-class DisplayPictureScreen extends StatelessWidget {
-  final String imagePath;
-
-  const DisplayPictureScreen({super.key, required this.imagePath});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Display the Picture')),
-      body: Image.file(File(imagePath)),
     );
   }
 }
