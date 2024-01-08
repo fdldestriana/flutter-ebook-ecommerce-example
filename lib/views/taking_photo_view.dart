@@ -31,7 +31,7 @@ class TakingPhotoViewState extends State<TakingPhotoView> {
     super.dispose();
   }
 
-  void takingPhoto() async {
+  void _takingPhoto() async {
     try {
       await _initializeControllerFuture;
       final image = await _cameraController.takePicture();
@@ -85,7 +85,7 @@ class TakingPhotoViewState extends State<TakingPhotoView> {
                 radius: 30,
                 backgroundColor: lightColorScheme.primary,
                 child: IconButton(
-                  onPressed: () => takingPhoto(),
+                  onPressed: () => _takingPhoto(),
                   icon: Icon(
                     Icons.photo_camera,
                     color: lightColorScheme.onPrimary,
