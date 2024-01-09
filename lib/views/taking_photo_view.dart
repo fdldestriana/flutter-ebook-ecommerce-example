@@ -93,8 +93,9 @@ class TakingPhotoViewState extends State<TakingPhotoView> {
                 ),
               ),
               IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.flip_camera_android_sharp))
+                onPressed: () {},
+                icon: const Icon(Icons.flip_camera_android_sharp),
+              )
             ],
           ),
         ),
