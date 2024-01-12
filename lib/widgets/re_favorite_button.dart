@@ -15,7 +15,10 @@ class _ReFavoriteButtonState extends State<ReFavoriteButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        isFavorite = !isFavorite;
+        setState(() {});
+      },
       child: Container(
         width: Get.width * 0.10,
         height: Get.height * 0.04,

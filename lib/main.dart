@@ -1,6 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:ecommerce_example/state_util.dart';
-import 'package:ecommerce_example/views/finding_view.dart';
+import 'package:ecommerce_example/views/product_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'color_schemes.dart';
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
               displayColor: lightColorScheme.shadow),
         ),
       ),
-      home: const FindingView(),
+      home: const ProductListView(),
       navigatorKey: Get.navigatorKey,
     );
   }

@@ -5,8 +5,8 @@ import 'package:ecommerce_example/widgets/re_favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({required this.product, super.key});
+class ReProductItem extends StatelessWidget {
+  const ReProductItem({required this.product, super.key});
   final Product product;
 
   @override
@@ -22,7 +22,7 @@ class MyWidget extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image.network(
+                child: Image.asset(
                   product.image,
                   width: Get.width * 0.39,
                   height: Get.height * 0.23,

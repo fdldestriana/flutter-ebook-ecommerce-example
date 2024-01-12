@@ -52,8 +52,8 @@ List<Product> _productList = [
       discount: 0,
       brand: "Rebook",
       creationDate: "May 8, 2023 9:04:59 PM",
-      image: "assets/shoes/rebook_pump.jpeg",
-      name: "Rebook Pump",
+      image: "assets/shoes/reebok_pump.jpeg",
+      name: "Reebok Pump",
       isPopular: true),
   Product(
       id: "Z1a2b3C4d5",
