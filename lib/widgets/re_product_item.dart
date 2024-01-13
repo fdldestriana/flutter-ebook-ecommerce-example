@@ -11,72 +11,68 @@ class ReProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: Get.width * 0.40,
-      height: Get.height * 0.32,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.asset(
-                  product.image,
-                  width: Get.width * 0.39,
-                  height: Get.height * 0.23,
-                  fit: BoxFit.cover,
-                ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                product.image,
+                width: Get.width * 0.39,
+                height: Get.height * 0.23,
+                fit: BoxFit.cover,
               ),
-              Positioned(
-                right: -Get.width * 0.01,
-                bottom: -Get.height * 0.02,
-                child: const ReFavoriteButton(),
+            ),
+            Positioned(
+              right: -Get.width * 0.01,
+              bottom: -Get.height * 0.02,
+              child: const ReFavoriteButton(),
+            )
+          ],
+        ),
+        Expanded(
+          child: Row(
+            children: [
+              ...List.generate(
+                5,
+                (index) => Icon(
+                  Icons.star,
+                  color: lightColorScheme
+                      .copyWith(background: const Color(0xFFFFBA49))
+                      .background,
+                  size: 14,
+                ),
               )
             ],
           ),
-          Expanded(
-            child: Row(
-              children: [
-                ...List.generate(
-                  5,
-                  (index) => Icon(
-                    Icons.star,
-                    color: lightColorScheme
-                        .copyWith(background: const Color(0xFFFFBA49))
-                        .background,
-                    size: 14,
-                  ),
-                )
-              ],
-            ),
-          ),
-          Text(
-            product.name,
-            overflow: TextOverflow.ellipsis,
+        ),
+        Text(
+          product.name,
+          overflow: TextOverflow.ellipsis,
+          style: GoogleFonts.montserrat(
+              color: lightColorScheme
+                  .copyWith(background: const Color(0xFF9B9B9B))
+                  .background,
+              fontSize: 11),
+        ),
+        Expanded(
+          child: Text(
+            product.brand,
             style: GoogleFonts.montserrat(
-                color: lightColorScheme
-                    .copyWith(background: const Color(0xFF9B9B9B))
-                    .background,
-                fontSize: 11),
+                color: lightColorScheme.shadow, fontSize: 15),
           ),
-          Expanded(
-            child: Text(
-              product.brand,
-              style: GoogleFonts.montserrat(
-                  color: lightColorScheme.shadow, fontSize: 15),
-            ),
+        ),
+        Expanded(
+          child: Text(
+            '${product.price / 100} \$',
+            style: GoogleFonts.montserrat(
+                color: lightColorScheme.shadow, fontSize: 13),
           ),
-          Expanded(
-            child: Text(
-              '${product.price / 100} \$',
-              style: GoogleFonts.montserrat(
-                  color: lightColorScheme.shadow, fontSize: 13),
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 }

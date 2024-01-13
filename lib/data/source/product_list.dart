@@ -9,7 +9,8 @@ List<Product> _productList = [
       creationDate: "May 8, 2023 9:04:59 PM",
       image: "assets/shoes/a_bathing_ape_bapesta.jpeg",
       name: "A Bathing Ape Bapesta",
-      isPopular: false),
+      isPopular: false,
+      isNew: true),
   Product(
       id: "H1iJkLmNoP",
       price: 120,
@@ -18,7 +19,8 @@ List<Product> _productList = [
       creationDate: "May 8, 2023 9:04:59 PM",
       image: "assets/shoes/adidas_samba.jpeg",
       name: "Adidas Samba",
-      isPopular: false),
+      isPopular: false,
+      isNew: false),
   Product(
       id: "QsRtUvWxYz",
       price: 130,
@@ -27,7 +29,8 @@ List<Product> _productList = [
       creationDate: "May 8, 2023 9:04:59 PM",
       image: "assets/shoes/converse_jack_purcell.jpeg",
       name: "Converse Jack Purcell",
-      isPopular: true),
+      isPopular: true,
+      isNew: false),
   Product(
       id: "5aB6cD7eF8",
       price: 145,
@@ -36,7 +39,8 @@ List<Product> _productList = [
       creationDate: "May 8, 2023 9:04:59 PM",
       image: "assets/shoes/nike_air_huarache.jpeg",
       name: "Nike Air Huarache",
-      isPopular: false),
+      isPopular: false,
+      isNew: false),
   Product(
       id: "G9hIjKlMn0",
       price: 155,
@@ -45,7 +49,8 @@ List<Product> _productList = [
       creationDate: "May 8, 2023 9:04:59 PM",
       image: "assets/shoes/nike_air_max_1.jpeg",
       name: "Nike Air Max",
-      isPopular: false),
+      isPopular: false,
+      isNew: true),
   Product(
       id: "PqRsTuVwXy",
       price: 155,
@@ -54,7 +59,8 @@ List<Product> _productList = [
       creationDate: "May 8, 2023 9:04:59 PM",
       image: "assets/shoes/reebok_pump.jpeg",
       name: "Reebok Pump",
-      isPopular: true),
+      isPopular: true,
+      isNew: true),
   Product(
       id: "Z1a2b3C4d5",
       price: 115,
@@ -63,7 +69,8 @@ List<Product> _productList = [
       creationDate: "May 8, 2023 9:04:59 PM",
       image: "assets/shoes/vans_half_cab.jpeg",
       name: "Vans Half Cab",
-      isPopular: false),
+      isPopular: false,
+      isNew: false),
   Product(
       id: "E6fGhI7jK8",
       price: 160,
@@ -72,7 +79,8 @@ List<Product> _productList = [
       creationDate: "May 8, 2023 9:04:59 PM",
       image: "assets/shoes/wilson_john_wooden.jpeg",
       name: "Wilson John Wooden",
-      isPopular: false)
+      isPopular: false,
+      isNew: false)
 ];
 
 List<Product> get productList => _productList;

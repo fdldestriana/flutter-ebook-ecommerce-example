@@ -7,17 +7,18 @@ class Product {
   final String image;
   final String name;
   final bool isPopular;
+  final bool isNew;
 
-  Product({
-    required this.id,
-    required this.price,
-    required this.discount,
-    required this.brand,
-    required this.creationDate,
-    required this.image,
-    required this.name,
-    required this.isPopular,
-  });
+  Product(
+      {required this.id,
+      required this.price,
+      required this.discount,
+      required this.brand,
+      required this.creationDate,
+      required this.image,
+      required this.name,
+      required this.isPopular,
+      required this.isNew});
 
   factory Product.fromFirestore(Map<String, dynamic> snapshot) {
     return Product(
@@ -29,6 +30,7 @@ class Product {
       image: snapshot['image'],
       name: snapshot['name'],
       isPopular: snapshot['popular'],
+      isNew: snapshot['isNew'],
     );
   }
 
@@ -42,6 +44,7 @@ class Product {
       'image': image,
       'name': name,
       'popular': isPopular,
+      'isNew': isNew
     };
   }
 }
