@@ -1,7 +1,9 @@
 import 'package:ecommerce_example/color_schemes.dart';
 import 'package:ecommerce_example/data/model/product.dart';
 import 'package:ecommerce_example/state_util.dart';
+import 'package:ecommerce_example/widgets/re_discount_tag.dart';
 import 'package:ecommerce_example/widgets/re_favorite_button.dart';
+import 'package:ecommerce_example/widgets/re_new_tag.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -24,6 +26,24 @@ class ReProductItem extends StatelessWidget {
                 width: Get.width * 0.39,
                 height: Get.height * 0.23,
                 fit: BoxFit.cover,
+              ),
+            ),
+            Visibility(
+              visible: product.isNew,
+              child: const Positioned(
+                left: 9,
+                top: 8,
+                child: ReNewTag(),
+              ),
+            ),
+            Visibility(
+              visible: product.discount != 0,
+              child: Positioned(
+                left: 9,
+                top: 8,
+                child: ReDiscountTag(
+                  discount: product.discount,
+                ),
               ),
             ),
             Positioned(
@@ -67,7 +87,7 @@ class ReProductItem extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            '${product.price / 100} \$',
+            '${product.price} \$',
             style: GoogleFonts.montserrat(
                 color: lightColorScheme.shadow, fontSize: 13),
           ),

@@ -20,7 +20,7 @@ class Product {
       required this.isPopular,
       required this.isNew});
 
-  factory Product.fromFirestore(Map<String, dynamic> snapshot) {
+  factory Product.fromJson(Map<String, dynamic> snapshot) {
     return Product(
       id: snapshot['id'],
       price: snapshot['price'],
