@@ -18,9 +18,9 @@ class SignupView extends StatefulWidget {
 
 class _SignupViewState extends State<SignupView> {
   final GlobalKey<FormState> signUpKey = GlobalKey<FormState>();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   File? photoProfile;
 
   @override

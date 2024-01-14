@@ -14,7 +14,7 @@ class ForgotPasswordView extends StatefulWidget {
 
 class _SigninViewState extends State<ForgotPasswordView> {
   final GlobalKey<FormState> forgotPasswordKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
   @override
   void dispose() {

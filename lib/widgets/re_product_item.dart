@@ -28,22 +28,16 @@ class ReProductItem extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            Visibility(
-              visible: product.isNew,
-              child: const Positioned(
-                left: 9,
-                top: 8,
-                child: ReNewTag(),
-              ),
+            Positioned(
+              left: 9,
+              top: 8,
+              child: ReNewTag(isNew: product.isNew),
             ),
-            Visibility(
-              visible: product.discount != 0,
-              child: Positioned(
-                left: 9,
-                top: 8,
-                child: ReDiscountTag(
-                  discount: product.discount,
-                ),
+            Positioned(
+              left: 9,
+              top: 8,
+              child: ReDiscountTag(
+                discount: product.discount,
               ),
             ),
             Positioned(

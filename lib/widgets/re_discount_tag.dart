@@ -8,21 +8,24 @@ class ReDiscountTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 40,
-      height: 24,
-      decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(29),
+    return Visibility(
+      visible: discount != 0,
+      child: Container(
+        width: 40,
+        height: 24,
+        decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(29),
+            ),
+            color: lightColorScheme.primary),
+        child: Center(
+          child: Text(
+            "-$discount%",
+            style: GoogleFonts.montserrat(
+                color: lightColorScheme.onPrimary,
+                fontSize: 11,
+                fontWeight: FontWeight.bold),
           ),
-          color: lightColorScheme.primary),
-      child: Center(
-        child: Text(
-          "-$discount%",
-          style: GoogleFonts.montserrat(
-              color: lightColorScheme.onPrimary,
-              fontSize: 11,
-              fontWeight: FontWeight.bold),
         ),
       ),
     );
