@@ -154,7 +154,7 @@ List<Product> _productList = [
   Product(
       id: "E6fGhI7jK8",
       price: 160,
-      discount: 5,
+      discount: 0,
       brand: "Dorothy Perkins",
       creationDate: "May 8, 2023 9:04:59 PM",
       image: "assets/product/t-shirt.png",

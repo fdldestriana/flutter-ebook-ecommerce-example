@@ -1,5 +1,6 @@
 import 'package:ecommerce_example/color_schemes.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ReNewTag extends StatelessWidget {
   const ReNewTag({super.key});
@@ -21,7 +22,7 @@ class ReNewTag extends StatelessWidget {
       child: Center(
         child: Text(
           "NEW",
-          style: TextStyle(
+          style: GoogleFonts.montserrat(
               color: lightColorScheme.onPrimary,
               fontSize: 11,
               fontWeight: FontWeight.bold),

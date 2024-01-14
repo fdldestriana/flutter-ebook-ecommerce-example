@@ -70,26 +70,49 @@ class ReProductItem extends StatelessWidget {
           ),
         ),
         Text(
-          product.name,
+          product.brand,
           overflow: TextOverflow.ellipsis,
           style: GoogleFonts.montserrat(
-              color: lightColorScheme
-                  .copyWith(background: const Color(0xFF9B9B9B))
-                  .background,
-              fontSize: 11),
-        ),
-        Expanded(
-          child: Text(
-            product.brand,
-            style: GoogleFonts.montserrat(
-                color: lightColorScheme.shadow, fontSize: 15),
+            color: lightColorScheme
+                .copyWith(background: const Color(0xFF9B9B9B))
+                .background,
+            fontSize: 11,
           ),
         ),
         Expanded(
           child: Text(
-            '${product.price} \$',
+            product.name,
             style: GoogleFonts.montserrat(
-                color: lightColorScheme.shadow, fontSize: 13),
+                color: lightColorScheme.shadow,
+                fontSize: 15,
+                fontWeight: FontWeight.bold),
+          ),
+        ),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                '${product.price} \$',
+                style: GoogleFonts.montserrat(
+                    color: lightColorScheme.shadow,
+                    fontSize: 13,
+                    decoration: product.discount != 0
+                        ? TextDecoration.lineThrough
+                        : null),
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              Visibility(
+                visible: product.discount != 0,
+                child: Text(
+                  '${product.price - (product.price * product.discount / 100)} \$',
+                  style: GoogleFonts.montserrat(
+                      color: lightColorScheme.primary, fontSize: 13),
+                ),
+              )
+            ],
           ),
         )
       ],

@@ -1,5 +1,6 @@
 import 'package:ecommerce_example/color_schemes.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ReDiscountTag extends StatelessWidget {
   const ReDiscountTag({required this.discount, super.key});
@@ -18,7 +19,7 @@ class ReDiscountTag extends StatelessWidget {
       child: Center(
         child: Text(
           "-$discount%",
-          style: TextStyle(
+          style: GoogleFonts.montserrat(
               color: lightColorScheme.onPrimary,
               fontSize: 11,
               fontWeight: FontWeight.bold),
