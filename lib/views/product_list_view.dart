@@ -4,18 +4,8 @@ import 'package:ecommerce_example/widgets/re_button.dart';
 import 'package:ecommerce_example/widgets/re_product_item.dart';
 import 'package:flutter/material.dart';
 
-class ProductListView extends StatefulWidget {
+class ProductListView extends StatelessWidget {
   const ProductListView({super.key});
-
-  @override
-  State<ProductListView> createState() => _ProductListViewState();
-}
-
-class _ProductListViewState extends State<ProductListView> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
